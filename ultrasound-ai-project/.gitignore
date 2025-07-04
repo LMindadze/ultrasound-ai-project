@@ -10,17 +10,6 @@ __pycache__/
 env/
 venv/
 
-# Logs, models, and temp
-logs/
-models/
-*.h5
-*.tflite
-
-# Dataset folders
-data/
-data_training/
-data_validation/
-splits/
 
 # OS
 .DS_Store

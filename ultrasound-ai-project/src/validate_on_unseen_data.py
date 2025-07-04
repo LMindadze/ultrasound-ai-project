@@ -1,7 +1,6 @@
 import os
 import cv2
 import numpy as np
-import tensorflow as tf
 from keras.models import load_model
 from utils.preprocessing import extract_roi
 
@@ -43,7 +42,7 @@ def main():
     kidney_total = kidney_correct = 0
     liver_total = liver_correct = 0
 
-    print("\n📊 Full Pipeline Results\n")
+    print("\n Full Pipeline Results\n")
     for path, true_organ, true_diag, fname in entries:
         img = preprocess_image(path)[None]  # add batch dim
 
@@ -76,11 +75,11 @@ def main():
             f"{true_organ} -> {true_diag} -> {fname} -> "
             f"OrganPred: {pred_o} ({'OK' if ok_o else 'FAIL'}) ; "
             f"DiagPred: {pred_diag} ({'OK' if ok_d else 'FAIL'}) -> "
-            f"{'✅ Passed' if ok_both else '❌ Failed'}"
+            f"{' Passed' if ok_both else ' Failed'}"
         )
 
     # Summary
-    print("\n🔍 Summary:")
+    print("\n Summary:")
     print(f"  Total images:            {total}")
     print(f"  Organ stage correct:     {organ_corr}/{total} ({organ_corr/total*100:.2f}%)")
 

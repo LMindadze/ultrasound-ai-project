@@ -27,7 +27,7 @@ def load_organ_data(data_dir,
                     image_paths.append(os.path.join(sub_dir, fname))
                     labels.append(i)
 
-    print(f"📊 Total images: {len(image_paths)} | Kidney={labels.count(0)} Liver={labels.count(1)}")
+    print(f"Total images: {len(image_paths)} | Kidney={labels.count(0)} Liver={labels.count(1)}")
 
     # 2) Balance: cap kidney to liver count if desired
     #    (optional—comment out if you want full data)
@@ -40,7 +40,7 @@ def load_organ_data(data_dir,
     keep = set(liver_idxs + sampled_k)
     image_paths = [image_paths[j] for j in keep]
     labels       = [labels[j]       for j in keep]
-    print(f"⚖️  Balanced to Kidney={labels.count(0)} Liver={labels.count(1)}")
+    print(f"  Balanced to Kidney={labels.count(0)} Liver={labels.count(1)}")
 
     # 3) Stratified split
     train_p, val_p, train_l, val_l = train_test_split(
@@ -73,7 +73,7 @@ def load_organ_data(data_dir,
                    .batch(batch_size)
                    .prefetch(tf.data.AUTOTUNE))
 
-    print(f"\n📦 Train: {len(train_p)} | 🧪 Val: {len(val_p)}\n")
+    print(f"\n Train: {len(train_p)} |  Val: {len(val_p)}\n")
     return train_ds, val_ds, organs
 
 def load_kidney_data(data_dir,
@@ -104,7 +104,7 @@ def load_kidney_data(data_dir,
             labels.append(label)
 
 
-    print(f"📊 Kidney images: normal={labels.count(0)} stone={labels.count(1)}")
+    print(f" Kidney images: normal={labels.count(0)} stone={labels.count(1)}")
 
     # 2) split
     if isinstance(val_split, str) and val_split == "all":
@@ -150,7 +150,7 @@ def load_kidney_data(data_dir,
                   .batch(batch_size)
                   .prefetch(tf.data.AUTOTUNE))
 
-    print(f"📦 Kidney train={len(train_p)} | 🧪 val={len(val_p)}")
+    print(f" Kidney train={len(train_p)} |  val={len(val_p)}")
     return train_ds, val_ds, ["normal","stone"]
 
 def load_liver_data(data_dir,
@@ -225,5 +225,5 @@ def load_liver_data(data_dir,
                   .batch(batch_size)
                   .prefetch(tf.data.AUTOTUNE))
 
-    print(f"📦 Liver train={len(train_p)} | 🧪 val={len(val_p)}")
+    print(f" Liver train={len(train_p)} |  val={len(val_p)}")
     return train_ds, val_ds, class_names
