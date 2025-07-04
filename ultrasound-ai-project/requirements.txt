@@ -1,9 +1,0 @@
-tensorflow
-streamlit
-scikit-learn
-matplotlib
-opencv-python
-pandas
-pillow
-tqdm
-opencv-python
